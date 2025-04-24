@@ -15,9 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
     container.innerHTML = '';
   
     dadosAula.modulos.forEach((modulo, mIdx) => {
-      // Título do módulo
+      // Título do módulo com setinha
       const h3 = document.createElement('h3');
       h3.textContent = modulo.titulo;
+  
+      const arrow = document.createElement('span');
+      arrow.className = 'arrow'; // Define a classe da seta
+      h3.appendChild(arrow);
+  
       container.appendChild(h3);
   
       // Lista de aulas
@@ -32,11 +37,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         ul.appendChild(li);
       });
+  
       container.appendChild(ul);
   
       // Toggle do acordeão
       h3.addEventListener('click', () => {
         ul.classList.toggle('active');
+        arrow.classList.toggle('expanded'); // Alterna a classe expanded
+  
+        // A seta irá agora alternar entre apontar para cima e para baixo através da classe
       });
     });
   });

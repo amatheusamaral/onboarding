@@ -1,49 +1,198 @@
-/* painel-admin/admin.css */
+/* === O CSS mais lindo que você já viu === */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+
+:root {
+  --primary: #13659f;
+  --primary-glow: #caa9ff;
+  --accent: #2cb67d;
+  --background: #f0f0f3;
+  --foreground: #ffffff;
+  --text: #1a1a1a;
+  --glass: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --radius: 24px;
+  --shadow-soft: 0 12px 35px rgba(0, 0, 0, 0.08);
+  --shadow-pop: 0 15px 60px rgba(127, 90, 240, 0.2);
+  --blur: blur(14px);
+  --font: 'Outfit', sans-serif;
+  --transition: all 0.35s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    padding: 1rem;
-    font-family: 'Segoe UI', sans-serif;
-    background: #f4f4f4;
-    color: #333;
+  font-family: var(--font);
+  background: linear-gradient(135deg, #e3e6f3, #f5f7fb);
+  color: var(--text);
+  padding: 3rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  min-height: 100vh;
+  transition: var(--transition);
+}
+
+/* Centralizador */
+.container {
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Cabeçalhos Cinemáticos */
+h1 {
+  font-size: 3.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-shadow: 0 2px 25px var(--primary-glow);
+  animation: floatDown 0.8s ease-out;
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  color: #222;
+  letter-spacing: 0.3px;
+}
+
+/* Cards com aura */
+section {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  transition: var(--transition);
+  animation: fadeFloat 1s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, var(--primary-glow), transparent 60%);
+  opacity: 0.05;
+  transform: rotate(45deg);
+}
+
+/* Campos de entrada com movimento */
+input,
+select {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius);
+  border: 1px solid #ddd;
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  margin-top: 1rem;
+  transition: var(--transition);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+  position: relative;
+  z-index: 1;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 5px rgba(127, 90, 240, 0.2);
+  transform: scale(1.01);
+}
+
+/* Botão com alma */
+button {
+  background: var(--primary);
+  color: #fff;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+  box-shadow: 0 6px 20px rgba(127, 90, 240, 0.25);
+  backdrop-filter: blur(4px);
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, #ffffff40, transparent);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: var(--transition);
+}
+
+button:hover::before {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+button:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-pop);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* Animações etéreas */
+@keyframes floatDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
   }
-  
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsividade divina */
+@media (max-width: 768px) {
   h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 2.25rem;
   }
-  
-  h2 {
-    font-size: 1.25rem;
-    margin: 0.5rem 0;
-  }
-  
+
   section {
-    background: #fff;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1.5rem;
   }
-  
-  input, select {
-    width: 100%;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
+
   button {
-    background: #4f00bc;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    width: 100%;
   }
-  
-  button:hover {
-    background: #3c0090;
-  }
-  
+}

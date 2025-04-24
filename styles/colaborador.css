@@ -37,7 +37,7 @@ body {
   
   .card:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 20px rgba(250, 250, 250, 0.3);
   }
   
   .card h2 {
@@ -108,7 +108,7 @@ body {
   /* sidebar de módulos */
   .sidebar {
     flex: 1;
-    background-color: #111;
+    background-color: #222;
     padding: 1rem;
     border-radius: 8px;
     font-size: 0.95rem;
@@ -144,4 +144,56 @@ body {
     font-weight: bold;
     color: #fff;
   }
+
+  /* Estilos para o painel de módulos */
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+  
+  h3 .arrow {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-left: 2px solid #fff; /* Cor branca */
+    border-bottom: 2px solid #fff; /* Cor branca */
+    transform: rotate(-45deg);
+    transition: transform 0.3s ease;
+  }
+  
+  h3 .arrow.expanded {
+    transform: rotate(135deg);
+  }
+  
+  ul {
+    display: none;
+    list-style: none;
+    padding-left: 1rem;
+    margin: 0;
+  }
+  
+  ul.active {
+    display: block;
+  }
+  
+  ul li {
+    margin: 0.5rem 0;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  ul li:hover {
+    background-color: #f0f0f3;
+  }
+  
+  ul li.active {
+    font-weight: 600;
+  }
+  
   
