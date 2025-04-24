@@ -23,6 +23,15 @@
     <button onclick="adicionarModulo()">Adicionar Módulo</button>
   </section>
 
+  <section>
+    <h2>Editar Módulo</h2>
+    <select id="modulo-select" onchange="editarModulo()"></select>
+    <input type="text" id="novo-modulo-nome" placeholder="Novo título do módulo" />
+    <input type="text" id="novas-aulas" placeholder="Novas aulas separadas por vírgula" />
+    <button onclick="salvarEdicao()">Salvar Edição</button>
+    <button onclick="excluirModulo()">Excluir Módulo</button>
+  </section>
+  
   <script src="script.js"></script>
 </body>
 </html>
