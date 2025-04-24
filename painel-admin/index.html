@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Painel Admin - Onboarding</title>
+  <link rel="stylesheet" href="../styles/admin.css" />
+</head>
+<body>
+  <h1>Painel de Administração</h1>
+
+  <section>
+    <h2>Criar novo Tema</h2>
+    <input type="text" id="tema-nome" placeholder="Título do tema" />
+    <input type="text" id="tema-descricao" placeholder="Descrição" />
+    <button onclick="criarTema()">Criar Tema</button>
+  </section>
+
+  <section>
+    <h2>Adicionar Módulo e Aulas</h2>
+    <select id="tema-select"></select>
+    <input type="text" id="modulo-nome" placeholder="Título do módulo" />
+    <input type="text" id="aulas" placeholder="Aulas separadas por vírgula" />
+    <button onclick="adicionarModulo()">Adicionar Módulo</button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
