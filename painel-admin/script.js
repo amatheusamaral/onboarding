@@ -22,20 +22,47 @@ function getTemas() {
     document.getElementById("tema-descricao").value = "";
   }
   
-  // Atualizar select com temas existentes
+  // Atualizar selects (tema-select e excluir-tema-select)
   function atualizarSelect() {
-    const select = document.getElementById("tema-select");
     const temas = getTemas();
-    select.innerHTML = "";
+  
+    const selectTema = document.getElementById("tema-select");
+    selectTema.innerHTML = "";
     temas.forEach((tema, index) => {
       const opt = document.createElement("option");
       opt.value = index;
       opt.textContent = tema.nome;
-      select.appendChild(opt);
+      selectTema.appendChild(opt);
     });
   
-    // Atualiza os módulos após carregar os temas
+    const selectExcluir = document.getElementById("excluir-tema-select");
+    if (selectExcluir) {
+      selectExcluir.innerHTML = "";
+      temas.forEach((tema, index) => {
+        const opt = document.createElement("option");
+        opt.value = index;
+        opt.textContent = tema.nome;
+        selectExcluir.appendChild(opt);
+      });
+    }
+  
     carregarModulos();
+  }
+  
+  // Excluir tema
+  function excluirTema() {
+    const select = document.getElementById("excluir-tema-select");
+    const temaIndex = select.value;
+  
+    if (temaIndex === "") return alert("Selecione um tema para excluir.");
+  
+    const temas = getTemas();
+    const temaNome = temas[temaIndex].nome;
+  
+    if (confirm(`Tem certeza que deseja excluir o tema "${temaNome}"?`)) {
+      temas.splice(temaIndex, 1);
+      salvarTemas(temas);
+    }
   }
   
   // Adicionar módulo e aulas
